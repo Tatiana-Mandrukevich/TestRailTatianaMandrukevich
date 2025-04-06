@@ -1,9 +1,13 @@
 package tests;
 
+import adapters.ProjectAdapter;
 import com.codeborne.selenide.Configuration;
+import entity.Project;
+import entity.Projects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -14,6 +18,7 @@ import steps.LoginSteps;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
@@ -23,12 +28,14 @@ public class BaseTest {
     protected LoginSteps loginSteps;
     protected AllProjectsPage allProjectsPage;
     protected LoginPage loginPage;
+    protected ProjectAdapter projectAdapter;
     SoftAssert softAssert = new SoftAssert();
 
     public void initPages() {
         loginSteps = new LoginSteps();
         allProjectsPage = new AllProjectsPage();
         loginPage = new LoginPage();
+        projectAdapter = new ProjectAdapter();
     }
 
     @BeforeMethod
@@ -55,5 +62,16 @@ public class BaseTest {
     @AfterMethod
     public void endTest() {
         getWebDriver().quit();
+    }
+
+    @AfterClass
+    public void deleteTestProjects() {
+        Projects projects = projectAdapter.getProjects();
+        for (Project project : projects.getProjects()) {
+            if (Objects.equals(project.getAnnouncement(), "Project announcement value") ||
+                    Objects.equals(project.getAnnouncement(), "Project announcement value updated ")) {
+                projectAdapter.deleteProject(project.getId());
+            }
+        }
     }
 }
