@@ -13,5 +13,8 @@ public interface IConstants {
     String GET_PROJECTS_ENDPOINT_API = "get_projects";
     String UPDATE_PROJECT_ENDPOINT_API = "update_project/%s";
     String DELETE_PROJECT_ENDPOINT_API = "delete_project/%s";
-    String SECTION_ENDPOINT_API = "";
+    String ADD_SECTION_ENDPOINT_API = "add_section/%s";
+    String GET_SECTIONS_ENDPOINT_API = "get_sections/%s&suite_id=%s";
+    String UPDATE_SECTION_ENDPOINT_API = "update_section/%s";
+    String DELETE_SECTION_ENDPOINT_API = "delete_section/%s";
 }

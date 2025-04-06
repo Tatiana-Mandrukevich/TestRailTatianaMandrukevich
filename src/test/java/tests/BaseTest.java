@@ -1,6 +1,7 @@
 package tests;
 
 import adapters.ProjectAdapter;
+import adapters.SectionAdapter;
 import com.codeborne.selenide.Configuration;
 import entity.Project;
 import entity.Projects;
@@ -29,6 +30,7 @@ public class BaseTest {
     protected AllProjectsPage allProjectsPage;
     protected LoginPage loginPage;
     protected ProjectAdapter projectAdapter;
+    protected SectionAdapter sectionAdapter;
     SoftAssert softAssert = new SoftAssert();
 
     public void initPages() {
@@ -36,6 +38,7 @@ public class BaseTest {
         allProjectsPage = new AllProjectsPage();
         loginPage = new LoginPage();
         projectAdapter = new ProjectAdapter();
+        sectionAdapter = new SectionAdapter();
     }
 
     @BeforeMethod
@@ -64,7 +67,7 @@ public class BaseTest {
         getWebDriver().quit();
     }
 
-    @AfterClass
+    @AfterClass(enabled = true)
     public void deleteTestProjects() {
         Projects projects = projectAdapter.getProjects();
         for (Project project : projects.getProjects()) {
