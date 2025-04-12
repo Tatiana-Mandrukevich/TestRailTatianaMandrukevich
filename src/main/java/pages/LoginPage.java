@@ -23,6 +23,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage openLoginPage() {
+        log.info("Opening login page");
         open(LOGIN_URL_UI);
         return this;
     }
@@ -47,10 +48,17 @@ public class LoginPage extends BasePage {
     }
 
     public String getLoginErrorMessageForInput(String inputField) {
-        return $x(String.format(LOGIN_ERROR_MESSAGE_FOR_INPUT, inputField)).shouldBe(Condition.visible).getText();
+        try {
+            log.info("Getting Login Error Message For Input");
+            return $x(String.format(LOGIN_ERROR_MESSAGE_FOR_INPUT, inputField)).shouldBe(Condition.visible).getText();
+        } catch (Exception e) {
+            log.error("Failed to get Login Error Message For Input", e);
+            return "";
+        }
     }
 
     public boolean isErrorMessageForInputFieldPresent(String inputField) {
+        log.info("Checking if error message for input field is present");
         return $x(String.format(LOGIN_ERROR_MESSAGE_FOR_INPUT, inputField)).exists();
     }
 
@@ -59,10 +67,17 @@ public class LoginPage extends BasePage {
      * @return - the current URL.
      */
     public String getCurrentUrl() {
+        log.info("Getting current URL");
         return WebDriverRunner.url();
     }
 
     public String getLoginErrorMessageAboveInputs(String errorClassName) {
-        return $(By.className(errorClassName)).shouldBe(Condition.visible).getText();
+        try {
+            log.info("Getting Login Error Message Above Inputs");
+            return $(By.className(errorClassName)).shouldBe(Condition.visible).getText();
+        } catch (Exception e) {
+            log.error("Failed to get Login Error Message Above Inputs", e);
+            return "";
+        }
     }
 }

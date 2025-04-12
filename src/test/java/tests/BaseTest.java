@@ -16,6 +16,9 @@ import org.testng.asserts.SoftAssert;
 import pages.AllProjectsPage;
 import pages.LoginPage;
 import steps.LoginSteps;
+import steps.ProjectSteps;
+import steps.SectionSteps;
+import tests.constants.ITestConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,20 +28,24 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 @Listeners(TestListener.class)
-public class BaseTest {
+public class BaseTest implements ITestConstants {
     protected LoginSteps loginSteps;
     protected AllProjectsPage allProjectsPage;
     protected LoginPage loginPage;
     protected ProjectAdapter projectAdapter;
     protected SectionAdapter sectionAdapter;
+    protected ProjectSteps projectSteps;
+    protected SectionSteps sectionSteps;
     SoftAssert softAssert = new SoftAssert();
 
     public void initPages() {
-        loginSteps = new LoginSteps();
-        allProjectsPage = new AllProjectsPage();
         loginPage = new LoginPage();
+        loginSteps = new LoginSteps(loginPage, allProjectsPage);
+        allProjectsPage = new AllProjectsPage();
         projectAdapter = new ProjectAdapter();
         sectionAdapter = new SectionAdapter();
+        projectSteps = new ProjectSteps(projectAdapter);
+        sectionSteps = new SectionSteps(sectionAdapter, projectAdapter);
     }
 
     @BeforeMethod
@@ -67,7 +74,7 @@ public class BaseTest {
         getWebDriver().quit();
     }
 
-    @AfterClass(enabled = true)
+    @AfterClass(enabled = false)
     public void deleteTestProjects() {
         Projects projects = projectAdapter.getProjects();
         for (Project project : projects.getProjects()) {
