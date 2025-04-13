@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class BaseAdapter implements IConstants {
     Gson gson = new Gson();
-    String auth = PropertyReader.getProperty("EMAIL") + ":" + PropertyReader.getProperty("API_KEY");
+    String auth = PropertyReader.getProperty("EMAIL") + ":" + API_KEY;
     String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
 
     public String get(String url) {

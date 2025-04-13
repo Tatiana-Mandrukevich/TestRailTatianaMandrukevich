@@ -12,12 +12,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import org.testng.asserts.SoftAssert;
-import pages.AllProjectsPage;
-import pages.LoginPage;
-import steps.LoginSteps;
-import steps.ProjectSteps;
-import steps.SectionSteps;
+import pages.*;
+import steps.*;
 import tests.constants.ITestConstants;
 
 import java.util.HashMap;
@@ -36,16 +32,27 @@ public class BaseTest implements ITestConstants {
     protected SectionAdapter sectionAdapter;
     protected ProjectSteps projectSteps;
     protected SectionSteps sectionSteps;
-    SoftAssert softAssert = new SoftAssert();
+    protected TestCasePage testCasePage;
+    protected TestCaseSteps testCaseSteps;
+    protected TestCasesPage testCasesPage;
+    protected TestCasesSteps testCasesSteps;
+    protected AddTestCasePage addTestCasePage;
+    protected AddTestCaseSteps addTestCaseSteps;
 
     public void initPages() {
         loginPage = new LoginPage();
-        loginSteps = new LoginSteps(loginPage, allProjectsPage);
+        loginSteps = new LoginSteps(loginPage);
         allProjectsPage = new AllProjectsPage();
         projectAdapter = new ProjectAdapter();
         sectionAdapter = new SectionAdapter();
         projectSteps = new ProjectSteps(projectAdapter);
         sectionSteps = new SectionSteps(sectionAdapter, projectAdapter);
+        testCasePage = new TestCasePage();
+        testCaseSteps = new TestCaseSteps(testCasePage);
+        testCasesPage = new TestCasesPage();
+        testCasesSteps = new TestCasesSteps(testCasesPage, sectionAdapter);
+        addTestCasePage = new AddTestCasePage();
+        addTestCaseSteps = new AddTestCaseSteps(addTestCasePage, sectionAdapter);
     }
 
     @BeforeMethod

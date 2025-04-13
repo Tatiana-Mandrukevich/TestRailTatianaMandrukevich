@@ -35,9 +35,9 @@ public class LoginPage extends BasePage {
 
     private LoginPage fillLoginForm(String email, String password) {
         isOpened();
-        new Input("loginIdName").writeOnLoginPage(email);
+        new Input("name").write(email);
         log.info("Login with data: Email/Login is {}", email);
-        new Input("loginPasswordFormDialog").writeOnLoginPage(password);
+        new Input("password").write(password);
         new Button().click(LOG_IN_BUTTON);
         return this;
     }
