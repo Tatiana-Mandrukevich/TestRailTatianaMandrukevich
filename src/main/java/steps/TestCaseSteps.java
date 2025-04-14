@@ -30,4 +30,21 @@ public class TestCaseSteps extends BaseSteps {
         softAssert.assertEquals(testCasePage.getExpectedResult("2"), testCase.getExpectedResultForSecondStep());
         softAssert.assertAll();
     }
+
+    @Step("Open 'Edit test case' page")
+    public void openEditTestCasePage() {
+        testCasePage.clickEditButton()
+                .isOpened();
+    }
+
+    @Step("Open 'Test cases' page from a test case page")
+    public void openTestCasesPageFromTestCase() {
+        testCasePage.clickSectionName()
+                .isOpened();
+    }
+
+    @Step("Get test case ID")
+    public String getTestCaseId() {
+        return testCasePage.getTestCaseId();
+    }
 }

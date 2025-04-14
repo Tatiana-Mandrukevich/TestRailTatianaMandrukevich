@@ -2,19 +2,22 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import elements.Button;
 import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static org.apache.commons.lang3.StringUtils.substring;
 
 @Log4j2
-public class TestCasePage extends AddTestCasePage {
+public class TestCasePage extends AddOrEditTestCasePage {
     private static final SelenideElement EDIT_BUTTON = $x("//*[@data-testid='testCaseEditButton']");
     private static final SelenideElement TITLE = $x("//*[@data-testid='testCaseContentHeaderTitle']");
     private static final SelenideElement SECTION = $x("//div[@class='content-breadcrumb']//a");
     private static final String TEST_CASE_PARAMETER = "//label[text()='%s']/parent::*";
     private static final SelenideElement PRECONDITIONS = $x("//div[@class='markdown']");
-    private static final String STEP_DESCRIPTION = "//span[@class='step-index-inner ' and contains(text(), '%s')]//ancestor::tr//div[@class='markdown content like-textarea step_load steps-view']//p";
-    private static final String EXPECTED_RESULT = "//span[@class='step-index-inner ' and contains(text(), '%s')]//ancestor::tr//div[@class='markdown expected like-textarea step_load steps-view']//p";
+    private static final String STEP_DESCRIPTION = "//span[@class='step-index-inner ' and contains(text(), '%s')]//ancestor::tr//div[@class='hidden-vertical']//p";
+    private static final String EXPECTED_RESULT = "//span[@class='step-index-inner ' and contains(text(), '%s')]//ancestor::tr//td[@class='step-content hidden-vertical']//p";
+    private static final SelenideElement TEST_CASE_ID = $x("//*[@data-testid='contentHeaderId']");
 
     public TestCasePage isOpened() {
         EDIT_BUTTON.shouldBe(Condition.visible);
@@ -45,7 +48,9 @@ public class TestCasePage extends AddTestCasePage {
     public String getTestCaseParameter(String parameter) {
         try {
             log.info("Getting an existing parameter: " + parameter);
-            return $x(String.format(TEST_CASE_PARAMETER, parameter)).shouldBe(Condition.visible).getText();
+            String text = $x(String.format(TEST_CASE_PARAMETER, parameter)).shouldBe(Condition.visible).getText();;
+            String[] lines = text.split("\n");
+            return lines[1];
         } catch (Exception e) {
             log.error("Error getting the test case parameter: {}", e.getMessage());
             return null;
@@ -80,5 +85,27 @@ public class TestCasePage extends AddTestCasePage {
             log.error("Error getting the expected result: {}", e.getMessage());
             return null;
         }
+    }
+
+    public String getTestCaseId() {
+        try {
+            log.info("Getting an existing test case ID");
+            return TEST_CASE_ID.shouldBe(Condition.visible).getText().substring(1);
+        } catch (Exception e) {
+            log.error("Error getting the test case ID: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    public AddOrEditTestCasePage clickEditButton() {
+        log.info("Clicking on 'Edit' button");
+        new Button().click(EDIT_BUTTON);
+        return new AddOrEditTestCasePage();
+    }
+
+    public TestCasesPage clickSectionName() {
+        log.info("Clicking on a section name");
+        new Button().click(SECTION);
+        return new TestCasesPage();
     }
 }

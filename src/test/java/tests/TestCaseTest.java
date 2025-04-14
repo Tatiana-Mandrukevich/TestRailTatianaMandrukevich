@@ -15,4 +15,33 @@ public class TestCaseTest extends BaseTest {
         TestCase testCase = addTestCaseSteps.addTestCase();
         testCaseSteps.verifyTestCaseDetails(testCase);
     }
+
+    @Test(description = "Update test case test and verify test case details")
+    public void updateTestCaseTest() {
+        projectSteps.addProject();
+        sectionSteps.addSection();
+        loginSteps.successfulLogin(EMAIL, PASSWORD);
+        testCasesSteps.openTestCasesPage();
+        testCasesSteps.openAddTestCasePage();
+        TestCase testCase = addTestCaseSteps.addTestCase();
+        testCaseSteps.verifyTestCaseDetails(testCase);
+        testCaseSteps.openEditTestCasePage();
+        TestCase updatedTestCase = addTestCaseSteps.updateTestCase();
+        testCaseSteps.verifyTestCaseDetails(updatedTestCase);
+    }
+
+    @Test(description = "Delete test case test and verify deletion")
+    public void deleteTestCaseTest() {
+        projectSteps.addProject();
+        sectionSteps.addSection();
+        loginSteps.successfulLogin(EMAIL, PASSWORD);
+        testCasesSteps.openTestCasesPage();
+        testCasesSteps.openAddTestCasePage();
+        TestCase testCase = addTestCaseSteps.addTestCase();
+        String testCaseId = testCaseSteps.getTestCaseId();
+        testCaseSteps.openTestCasesPageFromTestCase();
+        testCasesSteps.selectTestCaseCheckbox(testCaseId);
+        testCasesSteps.clickDeleteTestCaseButton();
+        dialogConfirmationSteps.deletePermanentlyTestCase();
+    }
 }

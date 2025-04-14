@@ -36,8 +36,10 @@ public class BaseTest implements ITestConstants {
     protected TestCaseSteps testCaseSteps;
     protected TestCasesPage testCasesPage;
     protected TestCasesSteps testCasesSteps;
-    protected AddTestCasePage addTestCasePage;
-    protected AddTestCaseSteps addTestCaseSteps;
+    protected AddOrEditTestCasePage addTestCasePage;
+    protected AddOrEditTestCaseSteps addTestCaseSteps;
+    protected DialogConfirmationPage dialogConfirmationPage;
+    protected DialogConfirmationSteps dialogConfirmationSteps;
 
     public void initPages() {
         loginPage = new LoginPage();
@@ -50,9 +52,11 @@ public class BaseTest implements ITestConstants {
         testCasePage = new TestCasePage();
         testCaseSteps = new TestCaseSteps(testCasePage);
         testCasesPage = new TestCasesPage();
-        testCasesSteps = new TestCasesSteps(testCasesPage, sectionAdapter);
-        addTestCasePage = new AddTestCasePage();
-        addTestCaseSteps = new AddTestCaseSteps(addTestCasePage, sectionAdapter);
+        testCasesSteps = new TestCasesSteps(testCasesPage, sectionAdapter, testCasePage);
+        addTestCasePage = new AddOrEditTestCasePage();
+        addTestCaseSteps = new AddOrEditTestCaseSteps(addTestCasePage, sectionAdapter);
+        dialogConfirmationPage = new DialogConfirmationPage();
+        dialogConfirmationSteps = new DialogConfirmationSteps(dialogConfirmationPage);
     }
 
     @BeforeMethod
