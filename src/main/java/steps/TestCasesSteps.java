@@ -18,9 +18,10 @@ public class TestCasesSteps extends BaseSteps {
     }
 
     @Step("Open test cases page")
-    public void openTestCasesPage() {
+    public TestCasesSteps openTestCasesPage() {
         testCasesPage.openTestCasesPage(sectionAdapter.getCreatedSectionSuiteId())
                 .isOpened();
+        return this;
     }
 
     @Step("Open 'Add test case' page")
@@ -30,8 +31,9 @@ public class TestCasesSteps extends BaseSteps {
     }
 
     @Step("Select checkbox for a test case")
-    public void selectTestCaseCheckbox(String testCaseId) {
+    public TestCasesSteps selectTestCaseCheckbox(String testCaseId) {
         testCasesPage.selectTestCaseCheckbox(testCaseId);
+        return this;
     }
 
     @Step("Click on 'Delete' button for test case")

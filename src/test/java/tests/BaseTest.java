@@ -3,8 +3,6 @@ package tests;
 import adapters.ProjectAdapter;
 import adapters.SectionAdapter;
 import com.codeborne.selenide.Configuration;
-import entity.Project;
-import entity.Projects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,10 +13,10 @@ import org.testng.annotations.Listeners;
 import pages.*;
 import steps.*;
 import tests.constants.ITestConstants;
+import tests.utils.TestListener;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
@@ -85,14 +83,8 @@ public class BaseTest implements ITestConstants {
         getWebDriver().quit();
     }
 
-    @AfterClass(enabled = false)
+    @AfterClass(enabled = true)
     public void deleteTestProjects() {
-        Projects projects = projectAdapter.getProjects();
-        for (Project project : projects.getProjects()) {
-            if (Objects.equals(project.getAnnouncement(), "Project announcement value") ||
-                    Objects.equals(project.getAnnouncement(), "Project announcement value updated ")) {
-                projectAdapter.deleteProject(project.getId());
-            }
-        }
+        projectAdapter.deleteTestProjectsByAnnouncementValue("Project announcement value", "Project announcement value updated");
     }
 }

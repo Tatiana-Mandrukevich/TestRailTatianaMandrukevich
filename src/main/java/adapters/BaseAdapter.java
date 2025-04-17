@@ -2,6 +2,7 @@ package adapters;
 
 import com.google.gson.Gson;
 import constants.IConstants;
+import utils.PropertyReader;
 
 import java.util.Base64;
 

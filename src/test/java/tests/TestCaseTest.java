@@ -10,8 +10,8 @@ public class TestCaseTest extends BaseTest {
         projectSteps.addProject();
         sectionSteps.addSection();
         loginSteps.successfulLogin(EMAIL, PASSWORD);
-        testCasesSteps.openTestCasesPage();
-        testCasesSteps.openAddTestCasePage();
+        testCasesSteps.openTestCasesPage()
+                .openAddTestCasePage();
         TestCase testCase = addTestCaseSteps.addTestCase();
         testCaseSteps.verifyTestCaseDetails(testCase);
     }
@@ -21,11 +21,11 @@ public class TestCaseTest extends BaseTest {
         projectSteps.addProject();
         sectionSteps.addSection();
         loginSteps.successfulLogin(EMAIL, PASSWORD);
-        testCasesSteps.openTestCasesPage();
-        testCasesSteps.openAddTestCasePage();
+        testCasesSteps.openTestCasesPage()
+                .openAddTestCasePage();
         TestCase testCase = addTestCaseSteps.addTestCase();
-        testCaseSteps.verifyTestCaseDetails(testCase);
-        testCaseSteps.openEditTestCasePage();
+        testCaseSteps.verifyTestCaseDetails(testCase)
+                .openEditTestCasePage();
         TestCase updatedTestCase = addTestCaseSteps.updateTestCase();
         testCaseSteps.verifyTestCaseDetails(updatedTestCase);
     }
@@ -35,13 +35,13 @@ public class TestCaseTest extends BaseTest {
         projectSteps.addProject();
         sectionSteps.addSection();
         loginSteps.successfulLogin(EMAIL, PASSWORD);
-        testCasesSteps.openTestCasesPage();
-        testCasesSteps.openAddTestCasePage();
+        testCasesSteps.openTestCasesPage()
+                .openAddTestCasePage();
         TestCase testCase = addTestCaseSteps.addTestCase();
         String testCaseId = testCaseSteps.getTestCaseId();
         testCaseSteps.openTestCasesPageFromTestCase();
-        testCasesSteps.selectTestCaseCheckbox(testCaseId);
-        testCasesSteps.clickDeleteTestCaseButton();
+        testCasesSteps.selectTestCaseCheckbox(testCaseId)
+                .clickDeleteTestCaseButton();
         dialogConfirmationSteps.deletePermanentlyTestCase();
     }
 }

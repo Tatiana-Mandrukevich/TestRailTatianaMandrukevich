@@ -13,7 +13,7 @@ public class TestCaseSteps extends BaseSteps {
     }
 
     @Step("Verify test case details")
-    public void verifyTestCaseDetails(TestCase testCase) {
+    public TestCaseSteps verifyTestCaseDetails(TestCase testCase) {
         testCasePage.isOpened();
         softAssert.assertEquals(testCasePage.getTestCaseTitle(), testCase.getTitle());
         softAssert.assertEquals(testCasePage.getTestCaseSection(), testCase.getSection());
@@ -29,6 +29,7 @@ public class TestCaseSteps extends BaseSteps {
         softAssert.assertEquals(testCasePage.getStepDescription("2"), testCase.getStepDescriptionForSecondStep());
         softAssert.assertEquals(testCasePage.getExpectedResult("2"), testCase.getExpectedResultForSecondStep());
         softAssert.assertAll();
+        return this;
     }
 
     @Step("Open 'Edit test case' page")

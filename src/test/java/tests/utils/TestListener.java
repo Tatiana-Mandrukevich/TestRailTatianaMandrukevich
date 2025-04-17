@@ -1,4 +1,4 @@
-package tests;
+package tests.utils;
 
 import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.WebDriverRunner;

@@ -23,7 +23,7 @@ public class SectionSteps extends BaseSteps {
 
     @Step("Update section with updated values")
     public SectionSteps updateSection() {
-       section = sectionAdapter.createSection("Section name value updated ", "Section description value updated");
+        section = sectionAdapter.createSection("Section name value updated ", "Section description value updated");
         sectionAdapter.updateSection(sectionAdapter.getCreatedSectionId(), section);
         return this;
     }

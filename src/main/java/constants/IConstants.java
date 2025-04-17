@@ -1,6 +1,6 @@
 package constants;
 
-import adapters.PropertyReader;
+import utils.PropertyReader;
 
 public interface IConstants {
     String BASE_URL_UI = "https://tatianamandrukevich.testrail.io/index.php?/";

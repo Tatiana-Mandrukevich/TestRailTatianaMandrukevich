@@ -5,6 +5,8 @@ import entity.Project;
 import entity.ProjectResponse;
 import entity.Projects;
 import lombok.extern.log4j.Log4j2;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Log4j2
 public class ProjectAdapter extends BaseAdapter {
@@ -24,7 +26,7 @@ public class ProjectAdapter extends BaseAdapter {
     public Project createProject(String name, String announcement, boolean showAnnouncement) {
         log.info("Creating a new project without suite mode");
         return Project.builder()
-                .name(name + java.time.LocalDateTime.now())
+                .name(name + LocalDateTime.now())
                 .announcement(announcement)
                 .showAnnouncement(showAnnouncement)
                 .build();
@@ -116,6 +118,16 @@ public class ProjectAdapter extends BaseAdapter {
         catch (NullPointerException e) {
             log.error("Failed to get an ID from a project response", e);
             return 0;
+        }
+    }
+
+    public void deleteTestProjectsByAnnouncementValue(String announcementValue1, String announcementValue2) {
+        Projects projects = getProjects();
+        for (Project project : projects.getProjects()) {
+            if (Objects.equals(project.getAnnouncement(), announcementValue1) ||
+                    Objects.equals(project.getAnnouncement(), announcementValue2)) {
+                deleteProject(project.getId());
+            }
         }
     }
 }
