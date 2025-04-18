@@ -37,11 +37,13 @@ public class TestCaseTest extends BaseTest {
         loginSteps.successfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
-        TestCase testCase = addTestCaseSteps.addTestCase();
+        addTestCaseSteps.addTestCase();
         String testCaseId = testCaseSteps.getTestCaseId();
         testCaseSteps.openTestCasesPageFromTestCase();
         testCasesSteps.selectTestCaseCheckbox(testCaseId)
                 .clickDeleteTestCaseButton();
         dialogConfirmationSteps.deletePermanentlyTestCase();
+        testCasesSteps.clickDisplayDeletedTestCasesButton()
+                .verifyTestCaseDeletion(testCaseId);
     }
 }

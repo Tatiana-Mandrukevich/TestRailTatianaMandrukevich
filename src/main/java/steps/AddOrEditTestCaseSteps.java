@@ -3,6 +3,7 @@ package steps;
 import adapters.SectionAdapter;
 import entity.TestCase;
 import io.qameta.allure.Step;
+import java.time.LocalDateTime;
 import pages.AddOrEditTestCasePage;
 
 public class AddOrEditTestCaseSteps extends BaseSteps {
@@ -18,7 +19,7 @@ public class AddOrEditTestCaseSteps extends BaseSteps {
     @Step("Add test case")
     public TestCase addTestCase() {
         TestCase testCase = TestCase.builder()
-                .title("Test Case Title value " + System.currentTimeMillis())
+                .title("Test Case Title value " + LocalDateTime.now())
                 .section(sectionAdapter.getCreatedSectionName())
                 .template("Test Case (Steps)")
                 .type("Functional")
@@ -41,7 +42,7 @@ public class AddOrEditTestCaseSteps extends BaseSteps {
     @Step("Update test case")
     public TestCase updateTestCase() {
         TestCase testCase = TestCase.builder()
-                .title("Test Case Title value updated " + System.currentTimeMillis())
+                .title("Test Case Title value updated " + LocalDateTime.now())
                 .section(sectionAdapter.getCreatedSectionName())
                 .template("Test Case (Steps)")
                 .type("Automated")

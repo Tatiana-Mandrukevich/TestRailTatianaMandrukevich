@@ -2,6 +2,7 @@ package adapters;
 
 import com.google.gson.Gson;
 import entity.*;
+import java.time.LocalDateTime;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -12,7 +13,7 @@ public class SectionAdapter extends BaseAdapter {
     public Section createSection(String name, String description) {
         log.info("Creating a new section");
         return Section.builder()
-                .name(name + java.time.LocalDateTime.now())
+                .name(name + LocalDateTime.now())
                 .description(description)
                 .build();
     }

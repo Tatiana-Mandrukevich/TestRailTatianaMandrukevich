@@ -16,7 +16,7 @@ public class ProjectAdapter extends BaseAdapter {
     public Project createProject(String name, String announcement, boolean showAnnouncement, int suiteMode) {
         log.info("Creating a new project");
         return Project.builder()
-                .name(name + java.time.LocalDateTime.now())
+                .name(name + LocalDateTime.now())
                 .announcement(announcement)
                 .showAnnouncement(showAnnouncement)
                 .suiteMode(suiteMode)

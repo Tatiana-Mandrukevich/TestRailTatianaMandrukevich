@@ -32,7 +32,7 @@ public class TestCasesSteps extends BaseSteps {
 
     @Step("Select checkbox for a test case")
     public TestCasesSteps selectTestCaseCheckbox(String testCaseId) {
-        testCasesPage.selectTestCaseCheckbox(testCaseId);
+        testCasesPage.selectTestCaseCheckboxByTestCaseId(testCaseId);
         return this;
     }
 
@@ -40,5 +40,18 @@ public class TestCasesSteps extends BaseSteps {
     public void clickDeleteTestCaseButton() {
         testCasesPage.clickDeleteButton()
                 .isOpenedFirstDialogPage();
+    }
+
+    @Step("Click on 'Display deleted test cases' button")
+    public TestCasesSteps clickDisplayDeletedTestCasesButton() {
+        testCasesPage.clickDisplayDeletedTestCasesButton()
+                .isOpened();
+        return this;
+    }
+
+    @Step("Verify test case deletion")
+    public void verifyTestCaseDeletion(String testCaseId) {
+        softAssert.assertFalse(testCasesPage.isTestCaseExistByTestCaseId(testCaseId));
+        softAssert.assertAll();
     }
 }
