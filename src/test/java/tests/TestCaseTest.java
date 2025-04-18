@@ -2,10 +2,11 @@ package tests;
 
 import entity.TestCase;
 import org.testng.annotations.Test;
+import tests.utils.Retry;
 
 public class TestCaseTest extends BaseTest {
 
-    @Test(description = "Add test case test and verify test case details")
+    @Test(description = "Add test case test and verify test case details", retryAnalyzer = Retry.class)
     public void addTestCaseTest() {
         projectSteps.addProject();
         sectionSteps.addSection();
@@ -16,7 +17,7 @@ public class TestCaseTest extends BaseTest {
         testCaseSteps.verifyTestCaseDetails(testCase);
     }
 
-    @Test(description = "Update test case test and verify test case details")
+    @Test(description = "Update test case test and verify test case details", retryAnalyzer = Retry.class)
     public void updateTestCaseTest() {
         projectSteps.addProject();
         sectionSteps.addSection();
@@ -30,7 +31,7 @@ public class TestCaseTest extends BaseTest {
         testCaseSteps.verifyTestCaseDetails(updatedTestCase);
     }
 
-    @Test(description = "Delete test case test and verify deletion")
+    @Test(description = "Delete test case test and verify deletion", retryAnalyzer = Retry.class)
     public void deleteTestCaseTest() {
         projectSteps.addProject();
         sectionSteps.addSection();
