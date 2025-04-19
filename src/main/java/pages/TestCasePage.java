@@ -6,7 +6,6 @@ import elements.Button;
 import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$x;
-import static org.apache.commons.lang3.StringUtils.substring;
 
 @Log4j2
 public class TestCasePage extends AddOrEditTestCasePage {

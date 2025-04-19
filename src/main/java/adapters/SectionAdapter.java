@@ -2,7 +2,6 @@ package adapters;
 
 import com.google.gson.Gson;
 import entity.*;
-import java.time.LocalDateTime;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
