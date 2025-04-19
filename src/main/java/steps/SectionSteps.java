@@ -2,6 +2,7 @@ package steps;
 
 import adapters.ProjectAdapter;
 import adapters.SectionAdapter;
+import entity.Section;
 import io.qameta.allure.Step;
 
 public class SectionSteps extends BaseSteps {
@@ -15,16 +16,16 @@ public class SectionSteps extends BaseSteps {
     }
 
     @Step("Create and add new section with default values")
-    public SectionSteps addSection() {
-        section = sectionAdapter.createSection("Section name value ", "Section description value");
+    public SectionSteps addSection(Section section) {
         sectionAdapter.addSection(projectAdapter.getCreatedProjectId(), section);
+        this.section = section;
         return this;
     }
 
     @Step("Update section with updated values")
-    public SectionSteps updateSection() {
-        section = sectionAdapter.createSection("Section name value updated ", "Section description value updated");
+    public SectionSteps updateSection(Section section) {
         sectionAdapter.updateSection(sectionAdapter.getCreatedSectionId(), section);
+        this.section = section;
         return this;
     }
 

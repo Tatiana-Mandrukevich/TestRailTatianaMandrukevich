@@ -1,6 +1,7 @@
 package steps;
 
 import adapters.ProjectAdapter;
+import entity.Project;
 import io.qameta.allure.Step;
 
 public class ProjectSteps extends BaseSteps {
@@ -12,16 +13,16 @@ public class ProjectSteps extends BaseSteps {
     }
 
     @Step("Create and add new project with default values")
-    public ProjectSteps addProject() {
-        project = projectAdapter.createProject("Project name value ", "Project announcement value", true, 1);
+    public ProjectSteps addProject(Project project) {
         projectAdapter.addProject(project);
+        this.project = project;
         return this;
     }
 
     @Step("Update project with updated values")
-    public ProjectSteps updateProject() {
-        project = projectAdapter.createProject("Project name value updated ", "Project announcement value updated", false);
+    public ProjectSteps updateProject(Project project) {
         projectAdapter.updateProject(projectAdapter.getCreatedProjectId(), project);
+        this.project = project;
         return this;
     }
 

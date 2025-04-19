@@ -13,25 +13,6 @@ public class ProjectAdapter extends BaseAdapter {
     ProjectResponse projectResponse;
     Projects projects;
 
-    public Project createProject(String name, String announcement, boolean showAnnouncement, int suiteMode) {
-        log.info("Creating a new project");
-        return Project.builder()
-                .name(name + LocalDateTime.now())
-                .announcement(announcement)
-                .showAnnouncement(showAnnouncement)
-                .suiteMode(suiteMode)
-                .build();
-    }
-
-    public Project createProject(String name, String announcement, boolean showAnnouncement) {
-        log.info("Creating a new project without suite mode");
-        return Project.builder()
-                .name(name + LocalDateTime.now())
-                .announcement(announcement)
-                .showAnnouncement(showAnnouncement)
-                .build();
-    }
-
     public ProjectResponse addProject(Project project) {
         log.info("Adding a new project");
         projectResponse = new Gson().fromJson(post(ADD_PROJECT_ENDPOINT_API, gson.toJson(project)), ProjectResponse.class);

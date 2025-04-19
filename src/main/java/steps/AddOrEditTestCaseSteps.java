@@ -3,7 +3,6 @@ package steps;
 import adapters.SectionAdapter;
 import entity.TestCase;
 import io.qameta.allure.Step;
-import java.time.LocalDateTime;
 import pages.AddOrEditTestCasePage;
 
 public class AddOrEditTestCaseSteps extends BaseSteps {

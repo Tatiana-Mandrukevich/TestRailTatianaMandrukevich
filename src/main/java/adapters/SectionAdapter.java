@@ -10,14 +10,6 @@ public class SectionAdapter extends BaseAdapter {
     SectionResponse sectionResponse;
     Sections sections;
 
-    public Section createSection(String name, String description) {
-        log.info("Creating a new section");
-        return Section.builder()
-                .name(name + LocalDateTime.now())
-                .description(description)
-                .build();
-    }
-
     public SectionResponse addSection(int projectId, Section section) {
         log.info("Adding a new section to project with ID: {}", projectId);
         sectionResponse = new Gson().fromJson(post(String.format(ADD_SECTION_ENDPOINT_API, projectId), gson.toJson(section)), SectionResponse.class);
