@@ -40,6 +40,7 @@ public class BaseTest implements ITestConstants {
     protected DialogConfirmationSteps dialogConfirmationSteps;
     protected HeaderPage headerPage;
     protected HeaderSteps headerSteps;
+    protected Preconditions preconditions;
 
     public void initPages() {
         loginPage = new LoginPage();
@@ -59,6 +60,8 @@ public class BaseTest implements ITestConstants {
         dialogConfirmationSteps = new DialogConfirmationSteps(dialogConfirmationPage);
         headerPage = new HeaderPage();
         headerSteps = new HeaderSteps(headerPage, loginPage);
+        System.out.println("SectionAdapter1: " + sectionAdapter);
+        preconditions = new Preconditions(sectionAdapter);
     }
 
     @BeforeMethod

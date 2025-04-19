@@ -13,7 +13,7 @@ public class TestCaseTest extends BaseTest {
         loginSteps.successfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
-        TestCase testCase = addTestCaseSteps.addTestCase();
+        TestCase testCase = addTestCaseSteps.addTestCase(preconditions.testCaseWithDefaultValues);
         testCaseSteps.verifyTestCaseDetails(testCase);
     }
 
@@ -24,10 +24,10 @@ public class TestCaseTest extends BaseTest {
         loginSteps.successfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
-        TestCase testCase = addTestCaseSteps.addTestCase();
+        TestCase testCase = addTestCaseSteps.addTestCase(preconditions.testCaseWithDefaultValues);
         testCaseSteps.verifyTestCaseDetails(testCase)
                 .openEditTestCasePage();
-        TestCase updatedTestCase = addTestCaseSteps.updateTestCase();
+        TestCase updatedTestCase = addTestCaseSteps.updateTestCase(preconditions.testCaseWithUpdatedValues);
         testCaseSteps.verifyTestCaseDetails(updatedTestCase);
     }
 
@@ -38,7 +38,7 @@ public class TestCaseTest extends BaseTest {
         loginSteps.successfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
-        addTestCaseSteps.addTestCase();
+        addTestCaseSteps.addTestCase(preconditions.testCaseWithDefaultValues);
         String testCaseId = testCaseSteps.getTestCaseId();
         testCaseSteps.openTestCasesPageFromTestCase();
         testCasesSteps.selectTestCaseCheckbox(testCaseId)
