@@ -8,6 +8,10 @@ public class Button {
     public Button() {
     }
 
+    /**
+     * This method is used to click on a button.
+     * @param selenideElement - button to be clicked.
+     */
     public void click(SelenideElement selenideElement) {
         selenideElement.shouldBe(Condition.visible).click();
     }

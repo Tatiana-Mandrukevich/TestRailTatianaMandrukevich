@@ -15,11 +15,20 @@ public class AddOrEditTestCasePage extends TestCasesPage {
     private static final SelenideElement ADD_OR_SAVE_TEST_CASE_BUTTON = $(By.id("accept"));
     private static final SelenideElement ADD_STEP_BUTTON = $x("//*[@data-testid = 'addEditCaseAddStep']");
 
+    /**
+     * This method is used to check if the Add or Edit Test Case page is opened.
+     * @return - the current instance of AddOrEditTestCasePage.
+     */
     public AddOrEditTestCasePage isOpened() {
         ADD_OR_SAVE_TEST_CASE_BUTTON.shouldBe(Condition.visible);
         return this;
     }
 
+    /**
+     * This method is used to create a new test case.
+     * @param testCase - test case to be created.
+     * @return TestCasePage
+     */
     public TestCasePage createTestCase(TestCase testCase) {
         new Input("title").write(testCase.getTitle());
         new Dropdown("section_id_chosen").selectOptionFromDropdown(testCase.getSection());
@@ -41,6 +50,11 @@ public class AddOrEditTestCasePage extends TestCasesPage {
         return new TestCasePage();
     }
 
+    /**
+     * This method is used to update an existing test case.
+     * @param testCase - updated test case.
+     * @return TestCasePage
+     */
     public TestCasePage updateTestCase(TestCase testCase) {
         new Input("title").clear();
         new Input("title").write(testCase.getTitle());

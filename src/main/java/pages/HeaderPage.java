@@ -16,12 +16,20 @@ public class HeaderPage extends BasePage {
     public HeaderPage() {
     }
 
+    /**
+     * This method is used to click on the user name.
+     * @return - the current instance of HeaderPage.
+     */
     public HeaderPage clickUserName() {
         log.info("Clicking on user name");
         new Button().click(USER_NAME);
         return this;
     }
 
+    /**
+     * This method is used to click on the 'Log Out' button.
+     * @return - the current instance of LoginPage.
+     */
     public LoginPage clickLogOutButton() {
         log.info("Clicking on 'Log Out' button");
         new Button().click(LOG_OUT_BUTTON);

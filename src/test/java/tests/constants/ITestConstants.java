@@ -1,6 +1,6 @@
 package tests.constants;
 
-import tests.utils.PropertyReader;
+import utils.PropertyReader;
 
 public interface ITestConstants {
     String EMAIL = PropertyReader.getProperty("EMAIL");

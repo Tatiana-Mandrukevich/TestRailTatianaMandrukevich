@@ -13,6 +13,10 @@ public class Dropdown {
         this.label = label;
     }
 
+    /**
+     * This method is used to select an option from a dropdown.
+     * @param option - the option to be selected.
+     */
     public void selectOptionFromDropdown(String option) {
         $x(String.format(DROPDOWN_LOCATOR, label)).click();
         $x(String.format(DROPDOWN_OPTION_LOCATOR, label, option)).shouldBe(Condition.clickable).click();

@@ -18,22 +18,38 @@ public class DialogConfirmationPage extends TestCasesPage {
     public DialogConfirmationPage () {
     }
 
+    /**
+     * This method is used to check if the first dialog page is opened.
+     * @return - the current instance of DialogConfirmationPage.
+     */
     public DialogConfirmationPage isOpenedFirstDialogPage() {
         DELETE_PERMANENTLY_BUTTON_ON_FIRST_DIALOG_PAGE.shouldBe(Condition.visible);
         return this;
     }
 
+    /**
+     * This method is used to check if the second dialog page is opened.
+     * @return - the current instance of DialogConfirmationPage.
+     */
     public DialogConfirmationPage isOpenedSecondDialogPage() {
         DELETE_PERMANENTLY_BUTTON_ON_SECOND_DIALOG_PAGE.shouldBe(Condition.visible);
         return this;
     }
 
+    /**
+     * This method is used to click on the 'Delete Permanently' button on the first dialog page.
+     * @return - the current instance of DialogConfirmationPage.
+     */
     public DialogConfirmationPage clickDeletePermanentlyButtonOnFirstDialogPage() {
         log.info("Clicking on 'Delete Permanently' button on the first dialog page");
         new Button().click(DELETE_PERMANENTLY_BUTTON_ON_FIRST_DIALOG_PAGE);
         return this;
     }
 
+    /**
+     * This method is used to click on the 'Delete Permanently' button on the second dialog page.
+     * @return - the current instance of TestCasesPage.
+     */
     public TestCasesPage clickDeletePermanentlyButtonOnSecondDialogPage() {
         log.info("Clicking on 'Delete Permanently' button on the second dialog page");
         new Button().click(DELETE_PERMANENTLY_BUTTON_ON_SECOND_DIALOG_PAGE);

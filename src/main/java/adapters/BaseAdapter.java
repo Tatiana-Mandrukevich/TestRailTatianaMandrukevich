@@ -13,6 +13,11 @@ public class BaseAdapter implements IConstants {
     String auth = PropertyReader.getProperty("EMAIL") + ":" + API_KEY;
     String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
 
+    /**
+     * This method is used to get the response from the API.
+     * @param url - url of the API.
+     * @return response in String format.
+     */
     public String get(String url) {
         return
                 given()
@@ -26,6 +31,12 @@ public class BaseAdapter implements IConstants {
                         .extract().body().asString();
     }
 
+    /**
+     * This method is used to post the data to the API.
+     * @param url - url of the API.
+     * @param body - body of the request.
+     * @return response in String format.
+     */
     public String post(String url, String body) {
         return
                 given()
@@ -40,6 +51,11 @@ public class BaseAdapter implements IConstants {
                         .extract().body().asString();
     }
 
+    /**
+     * This method is used to post the data to the API without body.
+     * @param url - url of the API.
+     * @return response in String format.
+     */
     public String postWithoutBody(String url) {
         return
                 given()

@@ -42,6 +42,9 @@ public class BaseTest implements ITestConstants {
     protected HeaderSteps headerSteps;
     protected Preconditions preconditions;
 
+    /**
+     * It is initializing the pages and steps.
+     */
     public void initPages() {
         loginPage = new LoginPage();
         loginSteps = new LoginSteps(loginPage);
@@ -63,6 +66,9 @@ public class BaseTest implements ITestConstants {
         preconditions = new Preconditions(sectionAdapter);
     }
 
+    /**
+     * It is initializing the WebDriver and setting the browser to Chrome.
+     */
     @BeforeMethod
     public void initTest() {
 
@@ -89,6 +95,9 @@ public class BaseTest implements ITestConstants {
         getWebDriver().quit();
     }
 
+    /**
+     * It is deleting test projects.
+     */
     @AfterClass(enabled = true)
     public void deleteTestProjects() {
         projectAdapter.deleteTestProjectsByAnnouncementValue("Project announcement value", "Project announcement value updated");

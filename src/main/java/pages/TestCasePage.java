@@ -18,11 +18,19 @@ public class TestCasePage extends AddOrEditTestCasePage {
     private static final String EXPECTED_RESULT = "//span[@class='step-index-inner ' and contains(text(), '%s')]//ancestor::tr//td[@class='step-content hidden-vertical']//p";
     private static final SelenideElement TEST_CASE_ID = $x("//*[@data-testid='contentHeaderId']");
 
+    /**
+     * This method is used to check if the Test Case page is opened.
+     * @return - the current instance of TestCasePage.
+     */
     public TestCasePage isOpened() {
         EDIT_BUTTON.shouldBe(Condition.visible);
         return this;
     }
 
+    /**
+     * This method is used to get the title of the test case.
+     * @return - the title of the test case.
+     */
     public String getTestCaseTitle() {
         try {
             log.info("Getting an existing title");
@@ -34,6 +42,10 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the section of the test case.
+     * @return - the section of the test case.
+     */
     public String getTestCaseSection() {
         try {
             log.info("Getting an existing section");
@@ -44,6 +56,11 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the test case parameter.
+     * @param parameter - the name of the parameter.
+     * @return - the value of the parameter.
+     */
     public String getTestCaseParameter(String parameter) {
         try {
             log.info("Getting an existing parameter: " + parameter);
@@ -56,6 +73,10 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the preconditions of the test case.
+     * @return - the preconditions of the test case.
+     */
     public String getTestCasePreconditions() {
         try {
             log.info("Getting an existing preconditions");
@@ -66,6 +87,11 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the step description of the test case.
+     * @param stepNumber - the number of the step.
+     * @return - the step description.
+     */
     public String getStepDescription(String stepNumber) {
         try {
             log.info("Getting an existing step description");
@@ -76,6 +102,11 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the expected result of the test case.
+     * @param stepNumber - the number of the step.
+     * @return - the expected result.
+     */
     public String getExpectedResult(String stepNumber) {
         try {
             log.info("Getting an existing expected result");
@@ -86,6 +117,10 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to get the test case ID.
+     * @return - the test case ID.
+     */
     public String getTestCaseId() {
         try {
             log.info("Getting an existing test case ID");
@@ -96,12 +131,20 @@ public class TestCasePage extends AddOrEditTestCasePage {
         }
     }
 
+    /**
+     * This method is used to click on the 'Edit' button.
+     * @return - an instance of AddOrEditTestCasePage.
+     */
     public AddOrEditTestCasePage clickEditButton() {
         log.info("Clicking on 'Edit' button");
         new Button().click(EDIT_BUTTON);
         return new AddOrEditTestCasePage();
     }
 
+    /**
+     * This method is used to click on the section name.
+     * @return - an instance of TestCasesPage.
+     */
     public TestCasesPage clickSectionName() {
         log.info("Clicking on a section name");
         new Button().click(SECTION);

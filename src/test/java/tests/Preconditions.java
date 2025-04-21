@@ -13,34 +13,38 @@ public class Preconditions extends BaseTest {
 
     SectionAdapter sectionAdapter;
 
-    public Preconditions (SectionAdapter sectionAdapter) {
+    protected Preconditions (SectionAdapter sectionAdapter) {
         this.sectionAdapter = sectionAdapter;
     }
 
-    public static Project projectWithDefaultValues = Project.builder()
+    protected static Project projectWithDefaultValues = Project.builder()
             .name("Project name value " + LocalDateTime.now())
             .announcement("Project announcement value")
             .showAnnouncement(true)
             .suiteMode(1)
             .build();
 
-    public static Project projectWithUpdatedValues = Project.builder()
+    protected static Project projectWithUpdatedValues = Project.builder()
             .name("Project name value updated " + LocalDateTime.now())
             .announcement("Project announcement value updated")
             .showAnnouncement(false)
             .build();
 
-    public static Section sectionWithDefaultValues = Section.builder()
+    protected static Section sectionWithDefaultValues = Section.builder()
             .name("Section name value " + LocalDateTime.now())
             .description("Section description value")
             .build();
 
-    public static Section sectionWithUpdatedValues = Section.builder()
+    protected static Section sectionWithUpdatedValues = Section.builder()
             .name("Section name value updated " + LocalDateTime.now())
             .description("Section description value updated")
             .build();
 
-    public TestCase getTestCaseWithDefaultValues() {
+    /**
+     * This method is used to create a new test case with default values.
+     * @return test case with default values.
+     */
+    protected TestCase getTestCaseWithDefaultValues() {
         log.info("Creating a new test case with default values");
         return TestCase.builder()
             .title("Test Case Title value " + LocalDateTime.now())
@@ -60,7 +64,11 @@ public class Preconditions extends BaseTest {
             .build();
     }
 
-    public TestCase getTestCaseWithUpdatedValues() {
+    /**
+     * This method is used to create a new test case with updated values.
+     * @return test case with updated values.
+     */
+    protected TestCase getTestCaseWithUpdatedValues() {
         log.info("Creating a new test case with updated values");
         return TestCase.builder()
                 .title("Test Case Title value updated " + LocalDateTime.now())

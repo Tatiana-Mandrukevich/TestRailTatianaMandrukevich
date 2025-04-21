@@ -10,7 +10,7 @@ public class TestCaseTest extends BaseTest {
     public void addTestCaseTest() {
         projectSteps.addProject(Preconditions.projectWithDefaultValues);
         sectionSteps.addSection(Preconditions.sectionWithDefaultValues);
-        loginSteps.successfulLogin(EMAIL, PASSWORD);
+        loginSteps.checkSuccessfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
         TestCase testCase = addTestCaseSteps.addTestCase(preconditions.getTestCaseWithDefaultValues());
@@ -21,7 +21,7 @@ public class TestCaseTest extends BaseTest {
     public void updateTestCaseTest() {
         projectSteps.addProject(Preconditions.projectWithDefaultValues);
         sectionSteps.addSection(Preconditions.sectionWithDefaultValues);
-        loginSteps.successfulLogin(EMAIL, PASSWORD);
+        loginSteps.checkSuccessfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
         TestCase testCase = addTestCaseSteps.addTestCase(preconditions.getTestCaseWithDefaultValues());
@@ -35,7 +35,7 @@ public class TestCaseTest extends BaseTest {
     public void deleteTestCaseTest() {
         projectSteps.addProject(Preconditions.projectWithDefaultValues);
         sectionSteps.addSection(Preconditions.sectionWithDefaultValues);
-        loginSteps.successfulLogin(EMAIL, PASSWORD);
+        loginSteps.checkSuccessfulLogin(EMAIL, PASSWORD);
         testCasesSteps.openTestCasesPage()
                 .openAddTestCasePage();
         addTestCaseSteps.addTestCase(preconditions.getTestCaseWithDefaultValues());

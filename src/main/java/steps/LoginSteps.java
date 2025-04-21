@@ -15,7 +15,7 @@ public class LoginSteps extends BaseSteps {
     }
 
     @Step("Login by user: {email}")
-    public void successfulLogin(String email, String password) {
+    public void checkSuccessfulLogin(String email, String password) {
         loginPage
                 .openLoginPage()
                 .login(email, password)
@@ -25,7 +25,7 @@ public class LoginSteps extends BaseSteps {
     }
 
     @Step("Login by user: {email}")
-    public LoginSteps unsuccessfulLogin(String email, String password) {
+    public LoginSteps checkUnsuccessfulLogin(String email, String password) {
         loginPage
                 .openLoginPage()
                 .login(email, password);
@@ -36,22 +36,22 @@ public class LoginSteps extends BaseSteps {
 
     @Step("Verify error message for Email input field")
     public void verifyEmailErrorMessage() {
-        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Email"), LoginPage.EMAIL_ERROR_MESSAGE);
+        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Email"), loginPage.getEMAIL_ERROR_MESSAGE());
         softAssert.assertFalse(loginPage.isErrorMessageForInputFieldPresent("Password"));
         softAssert.assertAll();
     }
 
     @Step("Verify error message for Password input field")
     public void verifyPasswordErrorMessage() {
-        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Password"), LoginPage.PASSWORD_ERROR_MESSAGE);
+        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Password"), loginPage.getPASSWORD_ERROR_MESSAGE());
         softAssert.assertFalse(loginPage.isErrorMessageForInputFieldPresent("Email"));
         softAssert.assertAll();
     }
 
     @Step("Verify error message for Email and Password input fields")
     public void verifyEmailAndPasswordErrorMessage() {
-        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Email"), LoginPage.EMAIL_ERROR_MESSAGE);
-        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Password"), LoginPage.PASSWORD_ERROR_MESSAGE);
+        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Email"), loginPage.getEMAIL_ERROR_MESSAGE());
+        softAssert.assertEquals(loginPage.getLoginErrorMessageForInput("Password"), loginPage.getPASSWORD_ERROR_MESSAGE());
         softAssert.assertAll();
     }
 
@@ -59,8 +59,8 @@ public class LoginSteps extends BaseSteps {
     public void verifyErrorMessageAboveFields() {
         softAssert.assertFalse(loginPage.isErrorMessageForInputFieldPresent("Email"));
         softAssert.assertFalse(loginPage.isErrorMessageForInputFieldPresent("Password"));
-        softAssert.assertEquals(loginPage.getLoginErrorMessageAboveInputs("error-on-top"), LoginPage.LOGIN_ERROR_ON_TOP);
-        softAssert.assertEquals(loginPage.getLoginErrorMessageAboveInputs("error-text"), LoginPage.LOGIN_ERROR_TEXT);
+        softAssert.assertEquals(loginPage.getLoginErrorMessageAboveInputs("error-on-top"), loginPage.getLOGIN_ERROR_ON_TOP());
+        softAssert.assertEquals(loginPage.getLoginErrorMessageAboveInputs("error-text"), loginPage.getLOGIN_ERROR_TEXT());
         softAssert.assertAll();
     }
 }

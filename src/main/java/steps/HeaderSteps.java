@@ -15,7 +15,7 @@ public class HeaderSteps extends BaseSteps {
     }
 
     @Step("Log out from the application")
-    public void logOut() {
+    public void checkLogOut() {
         headerPage.clickUserName()
                 .clickLogOutButton()
                 .isOpened();
